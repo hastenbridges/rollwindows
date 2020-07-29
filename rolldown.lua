@@ -18,18 +18,6 @@ while true do
         else alert("You must be in a vehicle to do this.")
         end
     end
-
-    --Rolls down windows upon switch to Trevor key press (Default F7)
-
-    if IsControlJustReleased(1, 168) then
-        if IsPedInVehicle(playerPed, playerVeh, false) then
-            RollUpWindow(playerVeh, 0)
-            RollUpWindow(playerVeh, 1)
-            alert("~b~Windows rolled up!")
-
-        else alert("You must be in a vehicle to do this.")
-        end
-    end
 end
 end)
 
