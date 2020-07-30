@@ -8,13 +8,15 @@ while true do
     Citizen.Wait(1)
     
 
-    --Rolls down windows upon switch to Franklin key press (Default F6)
-    if IsControlJustReleased(1, 167) then
+    --Rolls down windows upon Drop Weapon key press (Default F9)
+    if IsControlJustReleased(1, 56) then
         if IsPedInVehicle(playerPed, playerVeh, false) then
-            RollDownWindow(playerVeh, 0)
-            RollDownWindow(playerVeh, 1)
-            alert("~y~Windows rolled down!")
-
+            if GetPedInVehicleSeat(playerVeh, -1) == playerPed then
+                RollDownWindow(playerVeh, 0)
+                RollDownWindow(playerVeh, 1)
+                alert("~y~Windows rolled down!")
+            else alert("You must be in the driver's seat to do this.")
+            end
         else alert("You must be in a vehicle to do this.")
         end
     end

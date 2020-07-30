@@ -6,17 +6,19 @@ Citizen.CreateThread(function()
         local isDamaged = IsVehicleDamaged(playerVeh)
         Citizen.Wait(1)
 
-         --Rolls up windows upon switch to Trevor key press (Default F7)
+         --Rolls up windows upon Drop Ammo key press (Default F10)
 
-    if IsControlJustReleased(1, 168) then
+    if IsControlJustReleased(1, 57) then
         if IsPedInVehicle(playerPed, playerVeh, false) then
-            RollUpWindow(playerVeh, 0)
-            RollUpWindow(playerVeh, 1)
-            alert("~b~Windows rolled up!")
-            if isDamaged == false then
-                SetVehicleFixed(playerVeh)
+            if GetPedInVehicleSeat(playerVeh, -1) == playerPed then
+                RollUpWindow(playerVeh, 0)
+                RollUpWindow(playerVeh, 1)
+                alert("~b~Windows rolled up!")
+                if isDamaged == false then
+                    SetVehicleFixed(playerVeh)
+                end
+            else alert("You must be in the driver's seat to do this.")
             end
-
         else alert("You must be in a vehicle to do this.")
         end
     end
